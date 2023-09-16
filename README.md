@@ -1,63 +1,24 @@
-# Nuxt 3 Minimal Starter
+# Reproduction
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This will install Nuxt 3.6. `repro` script will give the same results as for Nuxt 3.5 for `baseUrl` and `repro:eslint` won't fail. This is an expected, correct behaviour.
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
+```shell
+pnpm i
+pnpm repro
+pnpm repro:eslint
 ```
 
-## Development Server
+Then install Nuxt 3.7, make Nuxt generate its stuff and re-run the repro scripts:
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
+```
+pnpm i nuxt@3.7.3
+npx nuxt prepare
+pnpm repro
+pnpm repro:eslint
 ```
 
-## Production
+You should see `baseUrl.current` set to `undefined` in the output of the `repro` script and `repro:eslint` is expected to find a false error.
 
-Build the application for production:
+Manually add `"baseUrl": ".",` to `.nuxt/tsconfig.json` and re-run the repro scripts. `repro:eslint` will function correctly now and won't find any errors.
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+By the way, adding `"baseUrl": "./.nuxt"` to `./tsconfig.json` is also enough for `repro:eslint` to work properly.
