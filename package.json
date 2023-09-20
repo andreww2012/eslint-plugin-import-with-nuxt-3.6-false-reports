@@ -6,6 +6,8 @@
     "repro": "node get-tsconfig.js"
   },
   "devDependencies": {
-    "get-tsconfig": "4.7.0"
+    "@types/node": "^20.6.3",
+    "get-tsconfig": "4.7.0",
+    "typescript": "^5.2.2"
   }
 }

@@ -24,3 +24,10 @@ pnpm repro
 }
 
 ```
+
+## Test TypeScript resolving
+
+```shell
+npx tsc --noEmit -p tsconfig.nuxt35.json 
+npx tsc --noEmit -p tsconfig.nuxt37.json 
+```

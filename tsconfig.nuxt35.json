@@ -1,3 +1,5 @@
 {
-  "extends": "./tsconfigs/tsconfig.nuxt35.json"
+  "extends": "./tsconfigs/tsconfig.nuxt35.json",
+
+  "include": ["*.ts"]
 }
