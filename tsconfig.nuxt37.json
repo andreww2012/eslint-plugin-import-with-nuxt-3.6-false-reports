@@ -1,0 +1,3 @@
+{
+  "extends": "./tsconfigs/tsconfig.nuxt37.json"
+}
